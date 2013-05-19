@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+    <link rel="stylesheet" href="./cap_loc_addl.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+</head>
+<body>
+<div data-role="page" id="page_one" data-theme="a">
+    <div data-role="header" data-theme="a">
+        <h1>Capture Location</h1>
+    </div>
+    <div data-role="content" data-theme="a">
+    <!-- <video autoplay id="vid" style="display:none;"></video> -->	
+  
+    <div id="centerbox">
+    <div id="picture_box">
+    <canvas id="canvas" width="640" height="480" style="border:1px solid #d3d3d3;"></canvas>
+    </div>
+     <div id="preview_box"> 
+      <video autoplay id="vid"width="100" height="100"></video>
+    </div>
+    </div>
+        <button onclick="snapshot()">Take Picture</button>
+        <a id="downloadImgLink" target="_blank" href="#"><button onclick="downLoadImage();">Download Image</button></a>
+        
+    </div>
+    <div data-role="footer" class="footer-docs" data-theme="c">
+        <p>&copy; George Sanchez</p>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    var video = document.querySelector("#vid");
+    var canvas = document.querySelector('#canvas');
+    
+    var ctx = canvas.getContext('2d');
+    var localMediaStream = null;
+    const MIME_TYPE = 'img/png';
+
+    var onCameraFail = function (e) {
+        console.log('Camera did not work.', e);
+    };
+
+    function snapshot() {
+        if (localMediaStream) {
+            ctx.drawImage(video, 0, 0);
+        }
+    }
+
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+    window.URL = window.URL || window.webkitURL;
+    navigator.getUserMedia({video:true}, function (stream) {
+        video.src = window.URL.createObjectURL(stream);
+        localMediaStream = stream;
+    }, onCameraFail);
+    
+    function downLoadImage(){
+    	 var downloadHref = document.querySelector('#downloadImgLink');
+    	  downloadHref.download = "MyImage.png";
+    	  downloadHref.href = canvas.toDataURL();
+    }
+
+</script>
+</body>
+</html>

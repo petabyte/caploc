@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+#centerbox {
+  /* flexbox, por favor */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+ 
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-pack: center;
+  -moz-box-align: center;
+  
+  display: box;
+  box-orient: horizontal;
+  box-pack: center;
+  box-align: center; 
+}
+​#picture_box{
+  position:relative;
+}
+#preview_box{
+   position:absolute;
+   top:450px;
+   right:312px;
+   z-index:10;
+
+}
