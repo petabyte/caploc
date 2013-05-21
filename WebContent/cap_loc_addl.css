@@ -1,28 +1,22 @@
 @CHARSET "UTF-8";
 #centerbox {
-  /* flexbox, por favor */
-  display: -webkit-box;
-  -webkit-box-orient: horizontal;
-  -webkit-box-pack: center;
-  -webkit-box-align: center;
- 
-  display: -moz-box;
-  -moz-box-orient: horizontal;
-  -moz-box-pack: center;
-  -moz-box-align: center;
-  
-  display: box;
-  box-orient: horizontal;
-  box-pack: center;
-  box-align: center; 
+  text-align:center;
 }
-​#picture_box{
-  position:relative;
+​#picture_box{	
+     border:1px solid #d3d3d3;
 }
-#preview_box{
-   position:absolute;
-   top:450px;
-   right:312px;
-   z-index:10;
 
+#canvas,#capture_image{
+
+margin-top: 25px;
+  width: 307px;
+  height: 250px;
+
+}
+#vid{
+  width: 100px;
+  height: 100px;
+}
+#capture_image{
+vertical-align: top;
 }
